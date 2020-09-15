@@ -1,5 +1,8 @@
 from django.views.generic import ListView
 
-class CustomerListView(ListView):
-    pass
+from .models import Customer
 
+class CustomerListView(ListView):
+    template_name = 'customer/customer_list.html'
+    model = Customer
+    queryset = Customer.objects.all()

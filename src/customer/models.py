@@ -15,8 +15,13 @@ class Customer(models.Model):
     updated_date = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=True)
 
+    objects = models.Manager()
+
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
+
+    def get_full_phone_number(self):
+        return f'({self.area_code}) {self.phone_number}'
     
     class Meta:
         db_table = 'customer'
